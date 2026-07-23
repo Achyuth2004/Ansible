@@ -1,0 +1,9 @@
+- name: Variables with including files
+  hosts: localhost   # corrected from 'localhosts'
+  vars_files:
+    - vars.yaml      # external file with variables
+
+  tasks:
+    - name: Printing info with including files
+      ansible.builtin.debug:
+        msg: "Hi, we are watching {{ Movie }} where hero is {{ Hero }} with duration of {{ Duration }}."

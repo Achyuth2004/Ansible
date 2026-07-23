@@ -1,0 +1,13 @@
+- name: Variables
+  hosts: localhost
+  vars:
+    Movie: "Dr.DoomsDay"
+    Hero: "Dooms"
+    Duration: "3.20Hrs"
+
+  tasks: 
+    - name: Printing override info
+      vars:   # override variables for this task only
+        Movie: "Avengers, Dr.DoomsDay"
+      ansible.builtin.debug:
+        msg: "Hi, We are watching {{ Movie }} where hero is {{ Hero }} with duration of {{ Duration }}."
