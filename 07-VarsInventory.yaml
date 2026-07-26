@@ -1,0 +1,8 @@
+- name: Variables accessing from inventory
+  hosts: localhost
+  tasks:
+    - name: Printing the info
+      vars:
+        runtime: "2.48Hrs"
+      ansible.builtin.debug:
+        msg: "Hi, we are here for watching the movie {{ movie }} with {{ lover }}. Runtime of movie is {{ runtime }}"
