@@ -1,0 +1,19 @@
+- name: Checking the preferences of variables
+  hosts: localhost
+  vars:
+    wishes: "Morning from Ansible-playbook"
+
+  vars_files:
+    - vars.yaml
+
+  vars_prompt:
+    - name: wishes
+      prompt: "Please enter wishes"
+      private: false
+
+  tasks:
+    - name: Checking the preferences
+      vars:
+        wishes: "Morning from Task variables"
+      ansible.builtin.debug:
+        msg: "Hello, {{ wishes }}"
