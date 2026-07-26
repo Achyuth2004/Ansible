@@ -1,0 +1,17 @@
+- name: Data Types in ansible
+  hosts: localhost
+  vars:
+    Course: Devops with Aws #string
+    Tools: #list
+      - Linux
+      - ShellScripting
+      - Ansible
+    Experience: #map or dictionary
+      Devops: 3
+      Aws: 2
+      Docker: 1
+    Realproject: True
+  tasks:
+    - name: Printing data types
+      ansible.builtin.debug:
+        msg: "Course is {{ Course }},Tools are {{ Tools }},Experience-> {{ Experience }},Realproject is {{ Realproject }}"    
