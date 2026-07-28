@@ -1,0 +1,72 @@
+- name: Default value
+  hosts: localhost
+  tasks:
+    - name: Printing default value
+      ansible.builtin.debug:
+        msg: "And I am | {{ char | default('Dr.Doom') }}"
+
+- name: Upper Case
+  hosts: localhost
+  vars:
+    dialogue: "bring me thanos"
+  tasks:
+    - name: Printing in upper case
+      ansible.builtin.debug:
+        msg: "{{ dialogue | upper }}"
+
+- name: Lower Case
+  hosts: localhost
+  vars:
+    dialogue: "I CAN DO THAT ALL DAY"
+  tasks:
+    - name: Printing in lower case
+      ansible.builtin.debug:
+        msg: "{{ dialogue | lower }}"
+
+- name: Remove duplicates
+  hosts: localhost
+  vars:
+    numbers: [1,2,2,3,3,3,4,4,4,4]
+  tasks:
+    - name: Removing duplicate values
+      ansible.builtin.debug:
+        msg: "{{ numbers | unique }}"
+
+- name: Print min & max
+  hosts: localhost
+  vars:
+    arr: [29,38,47,56]
+  tasks:
+    - name: Printing min and max values
+      ansible.builtin.debug:
+        msg: "Min value is {{ arr | min }}, Max value is {{ arr | max }}"
+
+- name: Convert dictionary into items/list
+  hosts: localhost
+  vars:
+    my_dict:   # dictionary (map / key-value pairs)
+      Course: Ansible
+      Trainer: Sivakumar
+      Duration: 120hr
+  tasks:
+    - name: Before convert
+      ansible.builtin.debug:
+        msg: "Before convert: {{ my_dict }}"
+    - name: After convert
+      ansible.builtin.debug:
+        msg: "After convert: {{ my_dict | dict2items }}"
+
+- name: Convert items to dictionary
+  hosts: localhost
+  vars:
+    my_list:
+      - { key: 'Course', value: 'Ansible' }
+      - { key: 'Trainer', value: 'Sivakumar' }
+      - { key: 'Duration', value: '120hr' }
+  tasks:
+    - name: Before convert
+      ansible.builtin.debug:
+        msg: "Before convert: {{ my_list }}"
+    - name: After convert
+      ansible.builtin.debug:
+        msg: "After convert: {{ my_list | items2dict }}"
